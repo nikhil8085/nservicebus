@@ -21,10 +21,12 @@ namespace Samples.NServiceBus.Webshop
             configuration.EndpointName(ConfigurationManager.AppSettings["NServiceBus.EndpointName"]);
             configuration.UseSerialization<JsonSerializer>();
             configuration.UseTransport<SqlServerTransport>();
+            configuration.UsePersistence<NHibernatePersistence>(); 
+            configuration.Transactions().DisableDistributedTransactions(); // disabled for AppHarbor, primarily, but you should enable this in production
             configuration.Conventions()
                 .DefiningEventsAs(p => p.Namespace != null && p.Namespace.StartsWith("Samples.NServiceBus.Messages") && p.Namespace.EndsWith("Events"))
                 .DefiningCommandsAs(p => p.Namespace != null && p.Namespace.StartsWith("Samples.NServiceBus.Messages") && p.Namespace.EndsWith("Commands"));
-            configuration.UsePersistence<NHibernatePersistence>();
+
             configuration.UseContainer<NinjectBuilder>(p => p.ExistingKernel(kernel));
             configuration.EnableInstallers();
 
