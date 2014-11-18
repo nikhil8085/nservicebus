@@ -28,8 +28,8 @@ RUNNING THE CODE
 TRY IT ONLINE
 -------------
 You can also try the applications online:
-http://examples.nservicebus.webshop.apphb.com
-http://examples.nservicebus.cms.apphb.com
+http://examplesnservicebuswebshop.apphb.com
+http://examplesnservicebuscms.apphb.com
 
 
 
