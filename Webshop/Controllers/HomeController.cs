@@ -37,7 +37,13 @@ namespace Samples.NServiceBus.Webshop.Controllers
         public ActionResult Purchase(Guid id)
         {
             var message = new PurchaseProductCommand() { Id = id };
+
+#if (DEBUG)
             bus.Send("CMS#LOCAL", message);
+#else
+            bus.Send("CMS", message);
+#endif
+
             return RedirectToAction("Index");
         }
 
