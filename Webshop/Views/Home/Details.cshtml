@@ -1,0 +1,28 @@
+﻿@model Samples.NServiceBus.Messages.ProductDto
+
+<div class="jumbotron">
+    <h1>Webshop</h1>
+    <p class="lead">This webshop, together with the CMS, demonstrate a simple application of NServiceBus.</p>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <h2>@Model.Name for $@Model.Price</h2>
+        <p>
+            @Model.Description
+        </p>
+
+        @if (!Model.Purchased)
+        {
+            @Html.ActionLink("Purchase", "Purchase", new { @Id = Model.Id }, new { @class = "btn btn-primary" })
+        }
+        else
+        {
+            <i>Already purchased</i>
+        }
+    <hr />
+        @Html.ActionLink("back to list", "Index", null, new { @class = "btn btn-default" })
+    </div>
+
+
+</div>

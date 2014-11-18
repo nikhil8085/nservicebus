@@ -1,0 +1,31 @@
+﻿@model IEnumerable<Samples.NServiceBus.Messages.ProductDto>
+
+<div class="jumbotron">
+    <h1>Webshop</h1>
+    <p class="lead">This webshop, together with the CMS, demonstrate a simple application of NServiceBus.</p>
+</div>
+
+@if (Model.Any())
+{
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Product</th>
+                <th>Price</th>
+                <th></th>
+            </tr>
+        </thead>
+        @foreach (var product in Model)
+        {
+        <tr>
+            <td>@product.Name</td>
+            <td>$ @product.Price</td>
+            <td class="text-right">@Html.ActionLink("Read more or purchase!", "Details", new { Id = @product.Id }, new { @class = "btn btn-default btn-xs" })</td>
+        </tr>
+        }
+    </table>
+}
+else
+{
+    <p>Sorry, we don't have products yet. Products need to be added through the @Html.ActionLink("CMS", "ToCMS", "Home") first.</p>
+}
