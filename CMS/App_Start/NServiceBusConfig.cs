@@ -1,5 +1,6 @@
 ﻿using Ninject;
 using NServiceBus;
+using Samples.NServiceBus.CMS;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -7,10 +8,13 @@ using System.Diagnostics;
 using System.Linq;
 using System.Web;
 
+[assembly: WebActivatorEx.ApplicationShutdownMethodAttribute(typeof(NServiceBusConfig), "Stop")]
 namespace Samples.NServiceBus.CMS
 {
     public class NServiceBusConfig
     {
+        private static IStartableBus bus;
+
         public static IBus CreateServiceBus(IKernel kernel)
         {
             var configuration = new BusConfiguration();
@@ -23,7 +27,14 @@ namespace Samples.NServiceBus.CMS
             configuration.UsePersistence<NHibernatePersistence>();
             configuration.UseContainer<NinjectBuilder>(p => p.ExistingKernel(kernel));
             configuration.EnableInstallers();
-            return Bus.Create(configuration).Start();
+
+            bus = Bus.Create(configuration);
+            return bus.Start();
+        }
+        
+        public static void Stop()
+        {
+            bus.Dispose();
         }
     }
 }
