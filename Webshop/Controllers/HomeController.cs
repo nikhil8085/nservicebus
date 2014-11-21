@@ -24,14 +24,12 @@ namespace Samples.NServiceBus.Webshop.Controllers
 
         public ActionResult Index()
         {
-            var products = localDataStore.GetEntities<ProductDto>();
-            return View(products);
+            return View(localDataStore.GetEntities<ProductDto>());
         }
 
         public ActionResult Details(string id)
         {
-            var product = localDataStore.GetEntity<ProductDto>(id);
-            return View(product);
+            return View(localDataStore.GetEntity<ProductDto>(id));
         }
 
         public ActionResult Purchase(Guid id)

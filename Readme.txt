@@ -1,5 +1,9 @@
 This application shows you how to use NServiceBus 5 with MVC 5 and Ninject for a (very, very) simple and webshop. 
 
+ASSOCIATED BLOGPOST
+-------------------
+http://www.christiaanverwijs.nl/post/2014/11/21/Using-NServiceBus-to-connect-two-webapplications-(MVC)-with-a-touch-of-CQRS.aspx
+
 REQUIREMENTS
 ------------
 1. A LocalDb instance or SQL-Server (you have to change the connectionstrings manually in this case)
