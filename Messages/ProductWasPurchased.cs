@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Samples.NServiceBus.Messages.Commands
+namespace Samples.NServiceBus.Messages.Events
 {
     public class ProductWasPurchased : ProductEventBase
     {
