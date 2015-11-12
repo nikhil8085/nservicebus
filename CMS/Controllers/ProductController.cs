@@ -110,7 +110,7 @@ namespace Samples.NServiceBus.CMS
 
         public ActionResult ToWebshop()
         {
-            HttpContext.Response.Redirect(ConfigurationManager.AppSettings["Sample.Url"]);
+            HttpContext.Response.Redirect(ConfigurationManager.AppSettings["Sample.WebshopUrl"]);
             return new EmptyResult();
         }
     }
